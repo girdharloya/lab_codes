@@ -1,0 +1,82 @@
+digraph y {
+	edge [fontsize=10];
+	node [shape=box,fontsize=10];
+	orientation=landscape;
+	rankdir=LR;
+	/*
+	margin=0.2;
+	page="8.27,11.69"; // for A4 printing
+	ratio=auto;
+	*/
+
+	q0 [label="0:\l  $accept -> . S $end\l  S -> . E\l  E -> . E '+' T\l  E -> . T\l  T -> . T '-' F\l  T -> . F\l  F -> . F '*' P\l  F -> . P\l  P -> . P '/' Q\l  P -> . Q\l  Q -> . Q '%' R\l  Q -> . R\l  R -> . A '^' R\l  R -> . A\l  A -> . number\l"];
+	q1 [label="1:\l  A -> number . { '^' '%' '/' '*' '-' '+' $end }\l"];
+	q2 [label="2:\l  $accept -> S . $end\l"];
+	q3 [label="3:\l  S -> E . { $end }\l  E -> E . '+' T\l"];
+	q4 [label="4:\l  E -> T . { '+' $end }\l  T -> T . '-' F\l"];
+	q5 [label="5:\l  T -> F . { '-' '+' $end }\l  F -> F . '*' P\l"];
+	q6 [label="6:\l  F -> P . { '*' '-' '+' $end }\l  P -> P . '/' Q\l"];
+	q7 [label="7:\l  P -> Q . { '/' '*' '-' '+' $end }\l  Q -> Q . '%' R\l"];
+	q8 [label="8:\l  Q -> R . { '%' '/' '*' '-' '+' $end }\l"];
+	q9 [label="9:\l  R -> A . '^' R\l  R -> A . { '%' '/' '*' '-' '+' $end }\l"];
+	q10 [label="10:\l  E -> E '+' . T\l  T -> . T '-' F\l  T -> . F\l  F -> . F '*' P\l  F -> . P\l  P -> . P '/' Q\l  P -> . Q\l  Q -> . Q '%' R\l  Q -> . R\l  R -> . A '^' R\l  R -> . A\l  A -> . number\l"];
+	q11 [label="11:\l  T -> T '-' . F\l  F -> . F '*' P\l  F -> . P\l  P -> . P '/' Q\l  P -> . Q\l  Q -> . Q '%' R\l  Q -> . R\l  R -> . A '^' R\l  R -> . A\l  A -> . number\l"];
+	q12 [label="12:\l  F -> F '*' . P\l  P -> . P '/' Q\l  P -> . Q\l  Q -> . Q '%' R\l  Q -> . R\l  R -> . A '^' R\l  R -> . A\l  A -> . number\l"];
+	q13 [label="13:\l  P -> P '/' . Q\l  Q -> . Q '%' R\l  Q -> . R\l  R -> . A '^' R\l  R -> . A\l  A -> . number\l"];
+	q14 [label="14:\l  Q -> Q '%' . R\l  R -> . A '^' R\l  R -> . A\l  A -> . number\l"];
+	q15 [label="15:\l  R -> . A '^' R\l  R -> A '^' . R\l  R -> . A\l  A -> . number\l"];
+	q16 [label="16:\l  E -> E '+' T . { '+' $end }\l  T -> T . '-' F\l"];
+	q17 [label="17:\l  T -> T '-' F . { '-' '+' $end }\l  F -> F . '*' P\l"];
+	q18 [label="18:\l  F -> F '*' P . { '*' '-' '+' $end }\l  P -> P . '/' Q\l"];
+	q19 [label="19:\l  P -> P '/' Q . { '/' '*' '-' '+' $end }\l  Q -> Q . '%' R\l"];
+	q20 [label="20:\l  Q -> Q '%' R . { '%' '/' '*' '-' '+' $end }\l"];
+	q21 [label="21:\l  R -> A '^' R . { '%' '/' '*' '-' '+' $end }\l"];
+
+	q0 -> q1 [label="number"];
+	q0 -> q2 [label="S"];
+	q0 -> q3 [label="E"];
+	q0 -> q4 [label="T"];
+	q0 -> q5 [label="F"];
+	q0 -> q6 [label="P"];
+	q0 -> q7 [label="Q"];
+	q0 -> q8 [label="R"];
+	q0 -> q9 [label="A"];
+	q3 -> q10 [label="'+'"];
+	q4 -> q11 [label="'-'"];
+	q5 -> q12 [label="'*'"];
+	q6 -> q13 [label="'/'"];
+	q7 -> q14 [label="'%'"];
+	q9 -> q15 [label="'^'"];
+	q10 -> q1 [label="number"];
+	q10 -> q16 [label="T"];
+	q10 -> q5 [label="F"];
+	q10 -> q6 [label="P"];
+	q10 -> q7 [label="Q"];
+	q10 -> q8 [label="R"];
+	q10 -> q9 [label="A"];
+	q11 -> q1 [label="number"];
+	q11 -> q17 [label="F"];
+	q11 -> q6 [label="P"];
+	q11 -> q7 [label="Q"];
+	q11 -> q8 [label="R"];
+	q11 -> q9 [label="A"];
+	q12 -> q1 [label="number"];
+	q12 -> q18 [label="P"];
+	q12 -> q7 [label="Q"];
+	q12 -> q8 [label="R"];
+	q12 -> q9 [label="A"];
+	q13 -> q1 [label="number"];
+	q13 -> q19 [label="Q"];
+	q13 -> q8 [label="R"];
+	q13 -> q9 [label="A"];
+	q14 -> q1 [label="number"];
+	q14 -> q20 [label="R"];
+	q14 -> q9 [label="A"];
+	q15 -> q1 [label="number"];
+	q15 -> q21 [label="R"];
+	q15 -> q9 [label="A"];
+	q16 -> q11 [label="'-'"];
+	q17 -> q12 [label="'*'"];
+	q18 -> q13 [label="'/'"];
+	q19 -> q14 [label="'%'"];
+}
